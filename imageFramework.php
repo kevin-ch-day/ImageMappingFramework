@@ -9,7 +9,9 @@ $image = $_SESSION['image'];
     <h2>Image Map</h2>
 	
 	<!-- display image here -->
-	<img src="<?php echo $image; ?>">
+	<?php 
+		echo "<img src=\"uploads\\".$_SESSION['image']."\" alt=\"uploaded image\" />";
+	?>
 	
 <form method="GET" id="imageLinkForm"></form>
 
@@ -58,4 +60,4 @@ function addNewArea(){
 
 <?php
 require_once('includes\footer.inc');
-?>
+?>

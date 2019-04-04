@@ -1,6 +1,6 @@
 <?php
 require_once('includes\header.inc');
-header('Refresh: 3; URL = imageFramework.php');
+header('Refresh: 7; URL = imageFramework.php');
 ?>
 
 <div id="content">
@@ -8,11 +8,10 @@ header('Refresh: 3; URL = imageFramework.php');
 
 <?php
 
+$_SESSION['image'] = $_FILES["fileToUpload"]["name"];
+
 $target_dir = $_SERVER['DOCUMENT_ROOT']."/web/ImageFramework/uploads/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-
-$_SESSION['image'] = $target_file;
-
 
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
