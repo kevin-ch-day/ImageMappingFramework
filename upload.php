@@ -1,6 +1,6 @@
 <?php
 require_once('includes\header.inc');
-header('Refresh: 7; URL = imageFramework.php');
+header('Refresh: 3; URL = imageFramework_single.php');
 ?>
 
 <div id="content">

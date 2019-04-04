@@ -6,18 +6,22 @@ $image = $_SESSION['image'];
 </style>
 <div id="content">
   <div id="main-menu">
-    <h2>Image Map</h2>
+    <h2 align="center">Image Map</h2>
 	
-	<!-- display image here -->
+	
 	<?php 
-		echo "<img src=\"uploads\\".$_SESSION['image']."\" alt=\"uploaded image\" />";
+		$imageName = explode(".", $_SESSION['image']);
 	?>
+
+	<!-- display image here -->
+	<img src="uploads\<?php echo $_SESSION['image']; ?>" id="uploadedImage" alt="uploaded image" border="1" usemap="#<?php echo $imageName[0]; ?>" />
+
 	
-<form method="GET" id="imageLinkForm"></form>
+<form action="generateImageMap.php" method="POST" id="imageLinkForm"></form>
 
 <table id="imageLinkTable">
 <tr><th>Active</th><th>Link</th><th>Title</th><th>Target</th></tr>
-<tr>
+<tr id="">
 	<td align="center"><input type="radio" name="active" value="active" form="imageLinkForm" checked></td>
 	<td><input type="text" name="link"></td><td><input type="text" name="title" form="imageLinkForm"></td>
 	<td><select name="" form="imageLinkForm">
@@ -34,9 +38,17 @@ $image = $_SESSION['image'];
 
 
 <script>
+
+function showCoords(event) {
+  var x = event.clientX;
+  var y = event.clientY;
+  return new Array(x,y);
+}
+
 function addNewArea(){
 	var table = document.getElementById("imageLinkTable");
 	var newRow = table.insertRow(1);
+	newRow.setAttribute("id", "myIdNameforThisRow");
 	var activeCell = newRow.insertCell(0);
 	var linkCell = newRow.insertCell(1);
 	var titleCell = newRow.insertCell(2);
