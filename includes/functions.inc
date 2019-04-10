@@ -19,10 +19,11 @@ function setupDatabase(){
 			link_target VARCHAR(25) NOT NULL');
 
 	
-	createTable('members',
-			'user VARCHAR(16) NOT NULL,
-			pass VARCHAR(16) NOT NULL,
-			INDEX(user(6))');
+	/* CREATE TABLE users (
+    	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    	username VARCHAR(50) NOT NULL UNIQUE,
+    	password VARCHAR(255) NOT NULL,
+    	created_at DATETIME DEFAULT CURRENT_TIMESTAMP); */
 }
 
 function createTable($tableName, $query){
@@ -57,17 +58,5 @@ function sanitizeString($var){
 	$var = stripslashes($var);
 	
 	return $conn->real_escape_string($var);
-}
-
-function showProfile($user){
-	if (file_exists("$user.jpg")){
-		echo "<img src='$user.jpg' style='float:left;'>";
-	}
-	
-	$result = aQuery("SELECT * FROM profiles WHERE user='$user'");
-	if ($result->num_rows){
-		$row = $result->fetch_array(MYSQLI_ASSOC);
-		echo stripslashes($row['text']) . "<br style='clear:left;'><br>";
-	}
 }
 ?>
