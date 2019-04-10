@@ -1,6 +1,7 @@
 <?php
 require_once('includes\header.inc');
 $image = $_SESSION['image'];
+static $numClickes = 0;
 ?>
 <style>
 </style>

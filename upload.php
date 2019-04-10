@@ -10,7 +10,8 @@ header('Refresh: 3; URL = imageFramework_single.php');
 
 $_SESSION['image'] = $_FILES["fileToUpload"]["name"];
 
-$target_dir = $_SERVER['DOCUMENT_ROOT']."/web/ImageFramework/uploads/";
+//$target_dir = $_SERVER['DOCUMENT_ROOT']."\web\github\ImageFramework\uploads\"";
+$target_dir = "uploads\\";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 
 $uploadOk = 1;
