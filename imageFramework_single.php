@@ -34,19 +34,6 @@ Target: <select name="">
 
 <script>
 
-
-$(document).ready(function(){
-  $("img").hover(function(){
-  	$(this).click();
-	}).click(function(){
-		var offset = $(this).offset();
-    alert(e.pageX - offset.left);
-    alert(e.pageY - offset.top);
-	});
-
-
-});
-
 function showCoords(event) {
   var x = event.clientX;
   var y = event.clientY;

@@ -27,17 +27,12 @@ function FindPosition(oElement){
 
 function getShape(){
 
-    coordinates[i].x
-    coordinates[i].y
+    coordinates[0].x
+    coordinates[0].y
 
-    coordinates[i].x
-    coordinates[i].y
-
-    coordinates[i].x
-    coordinates[i].y
-
-    coordinates[i].x
-    coordinates[i].y
+    coordinates[1].x
+    coordinates[1].y
+    
 }
 
 function GetCoordinates(e){
