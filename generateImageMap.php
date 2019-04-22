@@ -15,7 +15,8 @@ echo "<b>Coords: $coords<b><br/>";
 
 mysqli_select_db($conn, "imageframework");
 
-$query = "INSERT INTO imagelinks (link_url, link_name, link_target, link_coords) VALUES ('$url', '$name', '$target', '$coords'";
+$query = "INSERT INTO imagelinks (link_url, link_name, link_target, link_coords)
+VALUES ('$url', '$name', '$target', '$coords')";
 
 aQuery($query);
 
