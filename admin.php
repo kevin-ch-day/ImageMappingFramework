@@ -1,3 +1,9 @@
+<style>
+td, th{
+    padding: 5px;
+}
+
+</style>
 <?php
 require_once('includes\header.inc');
 /*
@@ -26,8 +32,8 @@ if($result->num_rows > 0 ){
             echo "<td><a href=\"" . $row['link_url'] ."\" target=\"_blank\">Link</a></td>";
             echo "<td>" . $row['link_name'] . "</td>";
             echo "<td>" . $row['link_target'] . "</td>";
-            echo "<td>" . $row['link_coords'] . "</td>";
-            echo "<td><td></tr>";
+            echo "<td>(" . $row['link_coords'] . ")</td>";
+            echo "<td><a href=\"\">Edit</a></td></tr>";
         }
 
         echo "</tbody></table>";
