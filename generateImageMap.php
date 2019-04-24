@@ -12,11 +12,11 @@ echo "<b>Title: $name</b><br/>";
 echo "<b>Target: $target</b><br/>";
 echo "<b>Coords: $coords</b><br/>";
 
-
 mysqli_select_db($conn, "imageframework");
 
-$query = "INSERT INTO imagelinks (link_url, link_name, link_target, link_coords)
+$sql = "INSERT INTO imagelinks (link_url, link_name, link_target, link_coords)
 VALUES ('$url', '$name', '$target', '$coords')";
+aQuery($sql);
 
 require_once('includes\footer.inc');
 ?>

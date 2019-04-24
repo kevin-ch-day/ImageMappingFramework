@@ -1,18 +1,16 @@
 <?php
 require_once('includes\header.inc');
-?>
 
-<div id="content">
-  <div id="main-menu">
-    <h2>Please select an image from your pc</h2>
-    <form action="upload.php" method="post" enctype="multipart/form-data">
-    Select image to upload:
-    <input type="file" name="fileToUpload" id="fileToUpload">
-    <input type="submit" value="Upload Image" name="submit">
-</form>
-  </div>
-</div>
+echo "<div id=\"content\"><div id=\"main-menu\">";
 
-<?php
+if(isset($image)){
+    echo "<img src=\"images\\$image\" alt=\"Image\">";
+
+}else{
+    echo "<h1>No image uploaded yet</h1>";
+    echo "<a href=\"uploadImage.php\">Upload an Image</a><br/>";
+}
+
+echo "</div></div>";
 require_once('includes\footer.inc');
 ?>

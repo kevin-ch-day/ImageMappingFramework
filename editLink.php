@@ -1,9 +1,9 @@
 <?php
 require_once('includes\header.inc');
-?>
 
-<h1>Preferences</h1>
+echo "<div id=\"content\"><div id=\"main-menu\">";
 
-<?php
+echo "</div></div>";
+
 require_once('includes\footer.inc');
 ?>

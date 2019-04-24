@@ -1,5 +1,7 @@
 <?php
 require_once('includes\header.inc');
+global $image;
+
 $image = $_SESSION['image'];
 ?>
 <style>
@@ -13,7 +15,7 @@ $image = $_SESSION['image'];
 	?>
 
 	<!-- display image here -->
-	<img src="uploads\<?php echo $_SESSION['image']; ?>" id="uploadedImage" alt="uploaded image" border="1" usemap="#<?php echo $imageName[0]; ?>" />
+	<img src="images\<?php echo $_SESSION['image']; ?>" id="uploadedImage" alt="uploaded image" border="1" usemap="#<?php echo $imageName[0]; ?>" />
 <script>
 
 var coords = "";

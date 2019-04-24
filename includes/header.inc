@@ -4,11 +4,12 @@
  * variable user is currently assigned a value. If so, a user has logged
  * in and the variable $loggedin is set to TRUE.
  */
- 
- 
 session_start();
+
 require_once 'includes\database.inc';
 require_once 'includes\functions.inc';
+
+global $image;
 ?>
 
 <!doctype html>

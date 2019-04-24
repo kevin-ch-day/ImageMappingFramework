@@ -5,19 +5,23 @@ require_once('includes\header.inc');
 // Define variables and initialize with empty values
 $username = $password = $confirm_password = "";
 $username_err = $password_err = $confirm_password_err = "";
- 
+
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
  
     // Validate username
     if(empty(trim($_POST["username"]))){
         $username_err = "Please enter a username.";
-    } else{
-        // Prepare a select statement
-        $sql = "SELECT id FROM users WHERE username = ?";
-        
-        if($stmt = $conn->prepare($sql)){
 
+    } else{
+
+        echo "<p> Apple </p>";
+
+        // Prepare a select statement
+        $sql = "SELECT id FROM users WHERE username = \"" . $_POST['username'] . "\"";
+
+        if($stmt = aQuery($sql)){
+            
             // Bind variables to the prepared statement as parameters
             $stmt->bind_param("s", $param_username);
             
@@ -32,6 +36,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 
                 if($stmt->num_rows == 1){
                     $username_err = "This username is already taken.";
+                    
                 } else{
                     $username = trim($_POST["username"]);
                 }
@@ -92,9 +97,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         // Close statement
         $stmt->close();
     }
-    
-    // Close connection
-    $conn->close();
 }
 ?>
 

@@ -30,10 +30,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     
     // Validate credentials
     if(empty($username_err) && empty($password_err)){
+        
+        mysqli_select_db($conn, "users");
+
         // Prepare a select statement
         $sql = "SELECT id, username, password FROM users WHERE username = ?";
         
-        if($stmt = $conn->prepare($sql)){
+        if($stmt = aQuery($sql)){
             // Bind variables to the prepared statement as parameters
             $stmt->bind_param("s", $param_username);
             
