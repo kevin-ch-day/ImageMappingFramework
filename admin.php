@@ -14,7 +14,7 @@ require_once('includes\header.inc');
  * #4 - Admin is able to retrieve the existing links
  */
 
-echo "<h1>Admin</h1>";
+echo "<h1>Admin Page</h1>";
 
 mysqli_select_db($conn, "imageframework");
 

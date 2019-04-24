@@ -36,6 +36,7 @@ echo "<b>Title: $name</b><br/>";
 echo "<b>Target: $target</b><br/>";
 echo "<b>Coords: $coords</b><br/>";
 echo "<b>Image Name: $image</b><br/>";
+echo "<a href=\"admin.php\">Admin Page</a><br/>";
 
 // image framework
 mysqli_select_db($conn, "imageframework");
