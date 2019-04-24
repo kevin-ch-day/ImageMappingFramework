@@ -6,6 +6,7 @@ td, th{
 </style>
 <?php
 require_once('includes\header.inc');
+
 /*
  * #1 - Admin can specify an image and create links (rectangular areas)
  * #2 - Admin can delete, update the previously created links
@@ -19,13 +20,14 @@ mysqli_select_db($conn, "imageframework");
 
 $query = "SELECT * FROM imagelinks";
 $result = aQuery($query);
+
 if($result->num_rows > 0 ){
     echo "<br/><table><thead><tr>";
         echo "<th>URL</th>";
         echo "<th>Name</th>";
         echo "<th>Target</th>";
         echo "<th>Coordinates</th>";
-        echo "<th>Edit</th></tr></thead><tbody>";
+        echo "<th>Edit</th><th>Delete</th></tr></thead><tbody>";
 
         while($row = $result->fetch_array()){
             echo "<tr>";
@@ -33,7 +35,8 @@ if($result->num_rows > 0 ){
             echo "<td>" . $row['link_name'] . "</td>";
             echo "<td>" . $row['link_target'] . "</td>";
             echo "<td>(" . $row['link_coords'] . ")</td>";
-            echo "<td><a href=\"editLink.php\">Edit</a></td></tr>";
+            echo "<td><a href=\"editLink.php\">Edit</a></td>";
+            echo "<td><a href=\"editLink.php\">Delete</a></td></tr>";
         }
 
         echo "</tbody></table>";
