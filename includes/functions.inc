@@ -24,6 +24,22 @@ function setupDatabase(){
     	username VARCHAR(50) NOT NULL UNIQUE,
     	password VARCHAR(255) NOT NULL,
     	created_at DATETIME DEFAULT CURRENT_TIMESTAMP); */
+
+	createTable('imagelinks',
+		"image_name varchar(30),
+		image_url varchar(70),
+		image_name varchar(50),
+		image_target varchar(10),
+		image_coords varchar(20)");
+
+	createTable('mainimage', 'image_name varchar(50)');
+
+	createTable('users',
+		'id int(10),
+		username varchar(50),
+		password varchar(255),
+		admin char(1),
+		created_at datetime');
 }
 
 function createTable($tableName, $query){

@@ -1,6 +1,5 @@
 <?php
 require_once('includes\header.inc');
-global $image;
 
 $image = $_SESSION['image'];
 ?>
@@ -72,8 +71,9 @@ Target: <select name="target">
 		<option value="_top">_top</option>
 	</select>
 
-<input type="hidden" id="coords" name="coords" value="">
-<input type="submit" value="Submit">
+		<input type="hidden" id="imageName" name="imageName" value="<?php echo $_SESSION['image']; ?>">
+		<input type="hidden" id="coords" name="coords" value="">
+		<input type="submit" value="Submit">
 </form>
   </div>
 </div>
