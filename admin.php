@@ -36,7 +36,7 @@ if($result->num_rows > 0 ){
             echo "<td>" . $row['link_target'] . "</td>";
             echo "<td>(" . $row['link_coords'] . ")</td>";
             echo "<td><a href=\"editLink.php\">Edit</a></td>";
-            echo "<td><a href=\"editLink.php\">Delete</a></td></tr>";
+            echo "<td><a href=\"deleteLink.php\">Delete</a></td></tr>";
         }
 
         echo "</tbody></table>";

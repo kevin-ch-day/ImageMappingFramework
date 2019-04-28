@@ -3,11 +3,21 @@
 $appname = "Image Framework";
 
 /*
-image_name (on your server images director)
-link_id
-link_url
-link_name
-link_target
+function resetDatabase(){
+	global $conn;
+
+	mysqli_select_db($conn, "imageframework");
+	$sql = "DELETE FROM imageframework";
+	aQuery($sql);
+
+	mysqli_select_db($conn, "mainimage");
+	$sql = "DELETE FROM mainimage;
+	aQuery($sql);
+
+	mysqli_select_db($conn, "users");
+	$sql = "DELETE FROM users";
+	aQuery($sql);
+}
 */
 
 function setupDatabase(){
