@@ -33,7 +33,13 @@ function setupDatabase(){
     	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     	username VARCHAR(50) NOT NULL UNIQUE,
     	password VARCHAR(255) NOT NULL,
-    	created_at DATETIME DEFAULT CURRENT_TIMESTAMP); */
+    	created_at DATETIME DEFAULT CURRENT_TIMESTAMP);
+		
+	INSERT INTO `users` (`id`, `username`, `password`, `admin`, `created_at`)
+	VALUES ('1', 'admin', 'Password01', 'y', '2019-04-29 00:00:00'),
+	('2', 'JSmith', 'Password01', 'n', '2019-04-29 00:00:00')
+
+	*/
 
 	createTable('imagelinks',
 		"image_name varchar(30),

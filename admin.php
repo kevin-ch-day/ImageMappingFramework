@@ -1,11 +1,25 @@
+<?php
+require_once('includes\header.inc');
+?>
+
 <style>
 td, th{
     padding: 5px;
 }
-
 </style>
+
+<script>
+function editLink(){
+    alert("Edit Link");
+    console.log("Edit Link");
+}
+function deleteLink($var id){
+    alert("Delete Link");
+    console.log("Edit Link");
+}
+</script>
+
 <?php
-require_once('includes\header.inc');
 
 /*
  * #1 - Admin can specify an image and create links (rectangular areas)
@@ -35,8 +49,10 @@ if($result->num_rows > 0 ){
             echo "<td>" . $row['link_name'] . "</td>";
             echo "<td>" . $row['link_target'] . "</td>";
             echo "<td>(" . $row['link_coords'] . ")</td>";
-            echo "<td><a href=\"editLink.php\">Edit</a></td>";
-            echo "<td><a href=\"deleteLink.php\">Delete</a></td></tr>";
+            //echo "<td><button type=\"button\" onclick=editLink(".$row['id'].")>Edit</button></td>";
+            echo "<td><button onclick='editLink()'>Edit</button></td>";
+            echo "<td><button onclick='deleteLink(".$row['id'].")'>Delete</button></td>";
+            echo "</tr>";
         }
 
         echo "</tbody></table>";
@@ -46,6 +62,5 @@ if($result->num_rows > 0 ){
 } else{
     echo "<p><em>No records were found.</em></p>";
 }
-
 require_once('includes\footer.inc');
 ?>
