@@ -50,7 +50,7 @@ if($result->num_rows > 0 ){
             echo "<td>" . $row['link_target'] . "</td>";
             echo "<td>(" . $row['link_coords'] . ")</td>";
             //echo "<td><button type=\"button\" onclick=editLink(".$row['id'].")>Edit</button></td>";
-            echo "<td><button onclick='editLink()'>Edit</button></td>";
+            echo "<td><button onclick=editLink()>Edit</button></td>";
             echo "<td><button onclick='deleteLink(".$row['id'].")'>Delete</button></td>";
             echo "</tr>";
         }
