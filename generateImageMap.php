@@ -15,6 +15,7 @@ $result = aQuery($query);
 
 // if there already is an image
 if($result->num_rows > 0 ){
+    /*
     $result->free();
     
     // delete old image name
@@ -29,7 +30,7 @@ if($result->num_rows > 0 ){
     mysqli_select_db($conn, "imagelinks");
     $sql = "DELETE FROM imagelinks";
     aQuery($sql);
-
+    */
 // no image uploaded yet
 }else{
 

@@ -8,19 +8,7 @@ td, th{
 }
 </style>
 
-<script>
-function editLink(){
-    alert("Edit Link");
-    console.log("Edit Link");
-}
-function deleteLink($var id){
-    alert("Delete Link");
-    console.log("Edit Link");
-}
-</script>
-
 <?php
-
 /*
  * #1 - Admin can specify an image and create links (rectangular areas)
  * #2 - Admin can delete, update the previously created links
@@ -41,7 +29,8 @@ if($result->num_rows > 0 ){
         echo "<th>Name</th>";
         echo "<th>Target</th>";
         echo "<th>Coordinates</th>";
-        echo "<th>Edit</th><th>Delete</th></tr></thead><tbody>";
+        echo "<th>Edit</th><th>Delete</th><th>Add</th></tr>";
+        echo "</thead><tbody>";
 
         while($row = $result->fetch_array()){
             echo "<tr>";
@@ -49,9 +38,9 @@ if($result->num_rows > 0 ){
             echo "<td>" . $row['link_name'] . "</td>";
             echo "<td>" . $row['link_target'] . "</td>";
             echo "<td>(" . $row['link_coords'] . ")</td>";
-            //echo "<td><button type=\"button\" onclick=editLink(".$row['id'].")>Edit</button></td>";
-            echo "<td><button onclick=editLink()>Edit</button></td>";
-            echo "<td><button onclick='deleteLink(".$row['id'].")'>Delete</button></td>";
+            echo "<td><a href=\"editLink.php?id=".$row['id']."\">Edit</a></td>";
+            echo "<td><a href=\"deleteLink.php?id=".$row['id']."\">Delete</a></td>";
+            echo "<td><a href=\"imageFramework_single.php\">Add</a></td>";
             echo "</tr>";
         }
 
@@ -61,6 +50,7 @@ if($result->num_rows > 0 ){
 
 } else{
     echo "<p><em>No records were found.</em></p>";
+    echo "<p><a href=\"imageFramework_single.php\">Add a record</a></p>";
 }
 require_once('includes\footer.inc');
 ?>

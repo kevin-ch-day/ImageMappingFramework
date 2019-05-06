@@ -19,7 +19,6 @@ static $numClickes = 0;
 
 	
 <form action="generateImageMap.php" method="POST" id="imageLinkForm"></form>
-
 <table id="imageLinkTable">
 <tr><th>Active</th><th>Link</th><th>Title</th><th>Target</th></tr>
 <tr id="">
@@ -57,6 +56,7 @@ function addNewArea(){
 
 	//activeCell.stlye.cssText="align='center'";
 	activeCell.innerHTML="<input type='radio' name='active' value='active' form='imageLinkForm'>";
+	activeCell.style.align="center";
 	linkCell.innerHTML="<input type='text' name='link' form='imageLinkForm'>";
 	titleCell.innerHTML="<input type='text' name='title' form='imageLinkForm'>";
 	targetCell.innerHTML=`<select name="" form="imageLinkForm">
