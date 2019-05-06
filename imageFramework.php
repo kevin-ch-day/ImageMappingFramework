@@ -1,24 +1,24 @@
 <?php
 require_once('includes\header.inc');
 $image = $_SESSION['image'];
-static $numClickes = 0;
 ?>
+
 <style>
 </style>
 <div id="content">
   <div id="main-menu">
     <h2 align="center">Image Map</h2>
-	
-	
-	<?php 
-		$imageName = explode(".", $_SESSION['image']);
-	?>
+
+	<?php $imageName = explode(".", $_SESSION['image']); ?>
 
 	<!-- display image here -->
-	<img src="uploads\<?php echo $_SESSION['image']; ?>" id="uploadedImage" alt="uploaded image" border="1" usemap="#<?php echo $imageName[0]; ?>" />
+	<img src="images\<?php echo $_SESSION['image']; ?>" id="uploadedImage" alt="uploaded image" border="1" usemap="#<?php echo $imageName[0]; ?>" />
 
 	
-<form action="generateImageMap.php" method="POST" id="imageLinkForm"></form>
+<form action="generateImageMap.php" method="POST" id="imageLinkForm">
+	<input type="hidden" id="imageName" name="imageName" value="<?php echo $_SESSION['image']; ?>">
+	<input type="hidden" id="coords" name="coords" value="">
+</form>
 
 <table id="imageLinkTable">
 <tr><th>Active</th><th>Link</th><th>Title</th><th>Target</th></tr>
@@ -37,40 +37,45 @@ static $numClickes = 0;
 <tr><td><button onclick="addNewArea()">Add New Area</button></td><td></td><td></td><td><input type="submit" value="Submit" form="imageLinkForm"></td></tr>
 </table>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+var coords = "";
 
-<script>
-
-function showCoords(event) {
-  var x = event.clientX;
-  var y = event.clientY;
-  return new Array(x,y);
+function Point(x, y){
+	this.x = x;
+	this.y = y;
 }
 
-function addNewArea(){
-	var table = document.getElementById("imageLinkTable");
-	var newRow = table.insertRow(1);
-	newRow.setAttribute("id", "myIdNameforThisRow");
-	var activeCell = newRow.insertCell(0);
-	var linkCell = newRow.insertCell(1);
-	var titleCell = newRow.insertCell(2);
-	var targetCell = newRow.insertCell(3);
+function countClicks(x, y){
+	if(typeof countClicks.num == 'undefined' ) {
+			countClicks.num = 0;
+    }
 
-	//activeCell.stlye.cssText="align='center'";
-	activeCell.innerHTML="<input type='radio' name='active' value='active' form='imageLinkForm'>";
-	linkCell.innerHTML="<input type='text' name='link' form='imageLinkForm'>";
-	titleCell.innerHTML="<input type='text' name='title' form='imageLinkForm'>";
-	targetCell.innerHTML=`<select name="" form="imageLinkForm">
-			<option value='---'>---</option>
-			<option value='_blank'>_blank</option>
-			<option value='_parent'>_parent</option>
-			<option value='_parent'>_parent</option>
-			<option value='_top'>_top</option>
-		</select>`;
+	countClicks.num++;
+	if(countClicks.num == 1){
+		coords += x + ", " + y;
+	}else if(countClicks.num == 2){
+		coords += ", " + x + ", " + y;
+		console.log(coords);
+		countClicks.num = 0;
+		document.getElementById("coords").value = coords;
+		coords = "";
+	}
 }
+
+$(document).ready(function() {
+	$("img").on("click", function(event) {
+  	var x = event.pageX - this.offsetLeft;
+		var y = event.pageY - this.offsetTop;
+		console.log("Click");
+		countClicks(x, y);
+    });
+});
 </script>
+
   </div>
 </div>
 
+<script src="scripts\lib.js"></script>
 <?php
 require_once('includes\footer.inc');
 ?>

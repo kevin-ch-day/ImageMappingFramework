@@ -1,6 +1,6 @@
 <?php
 require_once('includes\header.inc');
-header('Refresh: 5; URL = imageFramework_single.php');
+header('Refresh: 5; URL = imageFramework.php');
 
 echo "<div id=\"content\"><div id=\"main-menu\">";
 

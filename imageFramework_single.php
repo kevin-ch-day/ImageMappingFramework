@@ -1,8 +1,8 @@
 <?php
 require_once('includes\header.inc');
-
 $image = $_SESSION['image'];
 ?>
+
 <style>
 </style>
 <div id="content">
@@ -18,7 +18,6 @@ $image = $_SESSION['image'];
 <script>
 
 var coords = "";
-
 
 function Point(x, y){
 	this.x = x;
@@ -51,7 +50,6 @@ $(document).ready(function() {
 	$("img").on("click", function(event) {
   	var x = event.pageX - this.offsetLeft;
     var y = event.pageY - this.offsetTop;
-
 		countClicks(x, y);
     });
 });
