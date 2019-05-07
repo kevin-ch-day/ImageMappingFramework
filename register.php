@@ -80,7 +80,6 @@ require_once('includes\header.inc');
         // Close statement
         $stmt->close();
     }
-}
 ?>
 
     <div class="wrapper">

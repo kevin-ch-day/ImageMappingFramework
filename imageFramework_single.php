@@ -1,24 +1,49 @@
 <?php
 require_once('includes\header.inc');
-
-$image = $_SESSION['image'];
 ?>
 <style>
 </style>
 <div id="content">
   <div id="main-menu">
     <h2 align="center">Image Map</h2>
-	
-	<?php 
-		$imageName = explode(".", $_SESSION['image']);
-	?>
-
-	<!-- display image here -->
+<?php
+if(isset($_SESSION['image'])){
+	$image = $_SESSION['image'];
+	$imageName = explode(".", $_SESSION['image']);
+?>
+	<!-- display image if set with a session !-->
 	<img src="images\<?php echo $_SESSION['image']; ?>" id="uploadedImage" alt="uploaded image" border="1" usemap="#<?php echo $imageName[0]; ?>" />
+<?php
+		}else{
+
+			mysqli_select_db($conn, "mainimage");
+			$query = "SELECT * FROM mainimage";
+			$result = aQuery($query);
+		
+			if($result->num_rows > 0 ){
+				$row = $result->fetch_array();
+				$image = $row['image_name'];
+				$result->free();
+			}
+			if(isset($image)){
+				echo "<img src=\"images\\$image\" alt=\"Image\" usemap=\"#imageMap\">";
+				echo "<map name=\"imageMap\">";
+				mysqli_select_db($conn, "imageframework");
+				$query = "SELECT * FROM imagelinks";
+				$result = aQuery($query);
+				if($result->num_rows > 0 ){
+						while($row = $result->fetch_array()){
+								echo "<area shape=\"rect\" coords=\"".$row['link_coords']."\" href=\"".$row['link_url']."\" target=\"".$row['link_target']."\">";
+						}
+						$result->free();
+				}
+				echo "</map>";
+			}
+		}
+?>
 <script>
 
 var coords = "";
-
 
 function Point(x, y){
 	this.x = x;
